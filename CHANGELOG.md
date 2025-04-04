@@ -2,6 +2,88 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.3.7] - 2025-04-02
+
+### Add
+
+- Add delay to profile updates to debounce them (#34137 by @ClearlyClaire)
+- Add support for paginating partial collections in `SynchronizeFollowersService` (#34272 and #34277 by @ClearlyClaire)
+
+### Changed
+
+- Change account suspensions to be federated to recently-followed accounts as well (#34294 by @ClearlyClaire)
+- Change `AccountReachFinder` to consider statuses based on suspension date (#32805 and #34291 by @ClearlyClaire and @mjankowski)
+- Change user archive signed URL TTL from 10 seconds to 1 hour (#34254 by @ClearlyClaire)
+
+### Fixed
+
+- Fix static version of animated PNG emojis not being properly extracted (#34337 by @ClearlyClaire)
+- Fix filters not applying in detailed view, favourites and bookmarks (#34259 and #34260 by @ClearlyClaire)
+- Fix handling of malformed/unusual HTML (#34201 by @ClearlyClaire)
+- Fix `CacheBuster` being queued for missing media attachments (#34253 by @ClearlyClaire)
+- Fix incorrect URL being used when cache busting (#34189 by @ClearlyClaire)
+- Fix streaming server refusing unix socket path in `DATABASE_URL` (#34091 by @ClearlyClaire)
+- Fix “x” hotkey not working on boosted filtered posts (#33758 by @ClearlyClaire)
+
+## [4.3.6] - 2025-03-13
+
+### Security
+
+- Update dependency `omniauth-saml`
+- Update dependency `rack`
+
+### Fixed
+
+- Fix Stoplight errors when using `REDIS_NAMESPACE` (#34126 by @ClearlyClaire)
+
+## [4.3.5] - 2025-03-10
+
+### Changed
+
+- Change hashtag suggestion to prefer personal history capitalization (#34070 by @ClearlyClaire)
+
+### Fixed
+
+- Fix processing errors for some HEIF images from iOS 18 (#34086 by @renchap)
+- Fix streaming server not filtering unknown-language posts from public timelines (#33774 by @ClearlyClaire)
+- Fix preview cards under Content Warnings not being shown in detailed statuses (#34068 by @ClearlyClaire)
+- Fix username and display name being hidden on narrow screens in moderation interface (#33064 by @ClearlyClaire)
+
+## [4.3.4] - 2025-02-27
+
+### Security
+
+- Update dependencies
+- Change HTML sanitization to remove unusable and unused `embed` tag (#34021 by @ClearlyClaire, [GHSA-mq2m-hr29-8gqf](https://github.com/mastodon/mastodon/security/advisories/GHSA-mq2m-hr29-8gqf))
+- Fix rate-limit on sign-up email verification ([GHSA-v39f-c9jj-8w7h](https://github.com/mastodon/mastodon/security/advisories/GHSA-v39f-c9jj-8w7h))
+- Fix improper disclosure of domain blocks to unverified users ([GHSA-94h4-fj37-c825](https://github.com/mastodon/mastodon/security/advisories/GHSA-94h4-fj37-c825))
+
+### Changed
+
+- Change preview cards to be shown when Content Warnings are expanded (#33827 by @ClearlyClaire)
+- Change warnings against changing encryption secrets to be even more noticeable (#33631 by @ClearlyClaire)
+- Change `mastodon:setup` to prevent overwriting already-configured servers (#33603, #33616, and #33684 by @ClearlyClaire and @mjankowski)
+- Change notifications from moderators to not be filtered (#32974 and #33654 by @ClearlyClaire and @mjankowski)
+
+### Fixed
+
+- Fix `GET /api/v2/notifications/:id` and `POST /api/v2/notifications/:id/dismiss` for ungrouped notifications (#33990 by @ClearlyClaire)
+- Fix issue with some versions of libvips on some systems (#33853 by @kleisauke)
+- Fix handling of duplicate mentions in incoming status `Update` (#33911 by @ClearlyClaire)
+- Fix inefficiencies in timeline generation (#33839 and #33842 by @ClearlyClaire)
+- Fix emoji rewrite adding unnecessary curft to the DOM for most emoji (#33818 by @ClearlyClaire)
+- Fix `tootctl feeds build` not building list timelines (#33783 by @ClearlyClaire)
+- Fix flaky test in `/api/v2/notifications` tests (#33773 by @ClearlyClaire)
+- Fix incorrect signature after HTTP redirect (#33757 and #33769 by @ClearlyClaire)
+- Fix polls not being validated on edition (#33755 by @ClearlyClaire)
+- Fix media preview height in compose form when 3 or more images are attached (#33571 by @ClearlyClaire)
+- Fix preview card sizing in “Author attribution” in profile settings (#33482 by @ClearlyClaire)
+- Fix processing of incoming notifications for unfilterable types (#33429 by @ClearlyClaire)
+- Fix featured tags for remote accounts not being kept up to date (#33372, #33406, and #33425 by @ClearlyClaire and @mjankowski)
+- Fix notification polling showing a loading bar in web UI (#32960 by @Gargron)
+- Fix accounts table long display name (#29316 by @WebCoder49)
+- Fix exclusive lists interfering with notifications (#28162 by @ShadowJonathan)
+
 ## [4.3.3] - 2025-01-16
 
 ### Security
